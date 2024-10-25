@@ -98,8 +98,12 @@ void login() {
                         std::cin.clear();
                         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
                     }
-                    balance -= amount;
-                    std::cout << "Withdrawn successfully.\n";
+                    if (amount > balance) {
+                        std::cout << "Insufficient funds. Your current balance is: $" << balance << "\n";
+                    } else {
+                        balance -= amount;
+                        std::cout << "Withdrawn successfully.\n";
+                    }
                     break;
                 }
                 case 'r':
